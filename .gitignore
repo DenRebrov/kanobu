@@ -24,4 +24,4 @@
 .idea
 .DS_Store
 */.DS_Store
-db/development.sqlite3
+#db/development.sqlite3
