@@ -1,0 +1,36 @@
+<div class="text-center">
+  <h1>Вы выбрали</h1>
+
+
+  <%= image_tag(@subject.name, class: 'text-center') %>
+
+  <% user_choice = 0 if @subject.name == 'rock.png' %>
+  <% user_choice = 1 if @subject.name == 'scissor.png' %>
+  <% user_choice = 2 if @subject.name == 'paper.png' %>
+
+  <% computer_choice = rand(0..2) %>
+
+  <h1>Компьютер выбрал:</h1>
+  <% case computer_choice %>
+  <% when 0 %>
+      <%= image_tag('rock2.png', class: 'user-image') %>
+  <% when 1 %>
+      <%= image_tag('scissor2.png', class: 'user-image') %>
+  <% else %>
+      <%= image_tag('paper2.png', class: 'user-image') %>
+  <% end %>
+
+  <% if (computer_choice == user_choice) %>
+      <h1>Ничья...</h1>
+  <% elsif (computer_choice == 0 && user_choice == 1) || (computer_choice == 1 && user_choice == 2) || (computer_choice == 2 && user_choice == 0)%>
+      <h1>:( Победил Компьютер :(</h1>
+  <% else %>
+      <h1>ВЫ ПОБЕДИЛИ !</h1>
+  <% end %>
+
+  <%= link_to submit_tag('Еще сыграть', class: 'user-image'), root_path %>
+
+</div>
+
+
+
