@@ -1,3 +1,1 @@
-class Subject < ApplicationRecord
-
-end
+class Subject < ApplicationRecord; end

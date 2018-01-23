@@ -1,6 +1,9 @@
 <div class="text-center">
+  <%# Выводим текст пояснения-приветствия, который заключен в переменную @hello, которую мы задали
+  в экшене index контроллера subjects_controller %>
   <h1> <%= @hello %> </h1>
 
+  <%# Выводим ссылки-изображения наших предметов (камня, ножницы и бумаги) по их названиям %>
   <% @subjects.each do |subject| %>
       <%= link_to image_tag(subject.name), subject_path(subject) %>
   <% end %>

@@ -1,32 +1,42 @@
 <div class="text-center">
   <h1>Вы выбрали</h1>
-
+  <%# Выводим изображение выбранного пользователем предмета (камня, ножницы, бумаги) %>
   <%= image_tag(@subject.name) %>
 
+  <%# Присваиваем переменной user_choice числовое значение,
+  в зависимости от названия картинки %>
   <% user_choice = 0 if @subject.name == 'rock.png' %>
   <% user_choice = 1 if @subject.name == 'scissor.png' %>
   <% user_choice = 2 if @subject.name == 'paper.png' %>
 
+  <%# Присваиваем переменной computer_choice числовое значение, в случайной зависимости %>
   <% computer_choice = rand(0..2) %>
 
   <h1>Компьютер выбрал:</h1>
+  <%# Выводим изображение предмета, который выбрал комп по тому числу,
+  которое попало в переменную computer_choice (0,1 или 2) %>
   <% case computer_choice %>
   <% when 0 %>
-      <%= image_tag('rock2.png') %>
+    <%= image_tag('rock2.png') %>
   <% when 1 %>
-      <%= image_tag('scissor2.png') %>
+    <%= image_tag('scissor2.png') %>
   <% else %>
-      <%= image_tag('paper2.png') %>
+    <%= image_tag('paper2.png') %>
   <% end %>
 
+  <%# Результат игры. Если вариант компьютера и игрока совпадают - ничья
+  Если компьютер выбрал камень, а игрок ножницы или у компьютера ножницы, а у игрока бумага и наконец если
+  у компьютера бумага, а у игрока камень, в этих случаях компьютер победил, в остальных же победа за игроком %>
   <% if (computer_choice == user_choice) %>
-      <h1>Ничья...</h1>
+    <h1>Ничья...</h1>
   <% elsif (computer_choice == 0 && user_choice == 1) || (computer_choice == 1 && user_choice == 2) || (computer_choice == 2 && user_choice == 0)%>
-      <h1>Победил Компьютер :(</h1>
+    <h1>Победил Компьютер :(</h1>
   <% else %>
-      <h1>ВЫ ПОБЕДИЛИ !</h1>
+    <h1>ВЫ ПОБЕДИЛИ !</h1>
   <% end %>
 
+  <%# Кнопка-ссылка, которая переносит пользователя на начальный экран,
+  позволяя играть еще %>
   <%= link_to submit_tag('Еще сыграть'), root_path %>
 
 </div>
